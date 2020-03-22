@@ -80,6 +80,7 @@ using FillLatticeFunc = void (Wordrec::*)(const MATRIX &, const WERD_CHOICE_LIST
 typedef TessCallback4<const UNICHARSET &, int, PageIterator *, Pix *>
     TruthCallback;
 
+
 /**
  * Base class for all tesseract APIs.
  * Specific classes can add ability to work on different inputs or produce
@@ -92,6 +93,8 @@ class TESS_API TessBaseAPI {
  public:
   TessBaseAPI();
   virtual ~TessBaseAPI();
+
+  void PrepareImageForPageSegmentation();
 
   /**
    * Returns the version identifier as a static string. Do not delete.
@@ -787,6 +790,7 @@ class TESS_API TessBaseAPI {
                              int* unichar_ids,
                              float* ratings,
                              int* num_matches_returned);
+
 #endif  // ndef DISABLED_LEGACY_ENGINE
 
   /** This method returns the string form of the specified unichar. */
